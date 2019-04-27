@@ -23,7 +23,7 @@ const UserDetails = ({ userDetails }) => (
       <h4 className="mb-0">{userDetails.name}</h4>
       <span className="text-muted d-block mb-2">{userDetails.jobTitle}</span>
       <Button pill outline size="sm" className="mb-2">
-        <i className="material-icons mr-1">person_add</i> Follow
+        <i className="material-icons mr-1">person_add</i> Hire me
       </Button>
     </CardHeader>
     <ListGroup flush>
@@ -32,14 +32,7 @@ const UserDetails = ({ userDetails }) => (
           <strong className="text-muted d-block mb-2">
             {userDetails.performanceReportTitle}
           </strong>
-          <Progress
-            className="progress-sm"
-            value={userDetails.performanceReportValue}
-          >
-            <span className="progress-value">
-              {userDetails.performanceReportValue}%
-            </span>
-          </Progress>
+          <span className="material-icons">star star star star star</span>
         </div>
       </ListGroupItem>
       <ListGroupItem className="p-4">
@@ -48,14 +41,17 @@ const UserDetails = ({ userDetails }) => (
         </strong>
         <span>{userDetails.metaValue}</span>
       </ListGroupItem>
+      <ListGroupItem className="p-4">
+        <strong className="text-muted d-block mb-2">
+          {userDetails.sponserTitle}
+        </strong>
+        <span>{userDetails.sponserValue}</span>
+      </ListGroupItem>
     </ListGroup>
   </Card>
 );
 
 UserDetails.propTypes = {
-  /**
-   * The user details object.
-   */
   userDetails: PropTypes.object
 };
 
@@ -63,12 +59,14 @@ UserDetails.defaultProps = {
   userDetails: {
     name: "Sierra Brooks",
     avatar: require("./../../images/avatars/0.jpg"),
-    jobTitle: "Project Manager",
-    performanceReportTitle: "Workload",
-    performanceReportValue: 74,
+    jobTitle: "Service Workers",
+    performanceReportTitle: "Rating",
+    performanceReportValue: 100,
     metaTitle: "Description",
     metaValue:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?"
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?",
+    sponserTitle: "Sponser",
+    sponserValue: "eMerge"
   }
 };
 

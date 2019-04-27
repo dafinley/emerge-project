@@ -3,6 +3,7 @@ import { Container, Row, Col, FormSelect } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
 import GoogleMapsDirections from "../components/common/GoogleMapsDirections";
+import GoogleMapsOriginOnlyDirections from '../components/common/GoogleMapsOriginOnlyDirections';
 import ServiceRequests from '../components/common/ServiceRequests';
 import OriginDestinationDetails from '../components/common/OriginDestinationDetails';
 import OriginDetails from '../components/common/OriginDetails';
@@ -47,12 +48,14 @@ export default class CreateServiceRequest extends React.Component{
             <option value="3">Yard Work</option>
           </FormSelect>
           { showOriginDetails &&
-            <OriginDetails />
+            <Row><OriginDetails />
+            <GoogleMapsOriginOnlyDirections /></Row>
           }
           { showOriginDestinationDetails && 
-            <OriginDestinationDetails />
+            <Row><OriginDestinationDetails />
+            <GoogleMapsDirections /></Row>
           }
-          <GoogleMapsDirections />
+          
         </Col>
         <Col lg="6">
           <ServiceRequests />

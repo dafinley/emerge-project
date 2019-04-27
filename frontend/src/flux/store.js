@@ -7,8 +7,8 @@ import getSidebarNavItems from "../data/sidebar-nav-items";
 let _store = {
   menuVisible: false,
   navItems: getSidebarNavItems(),
-  origin: {lat: 41.8507300, lng: -87.6512600},
-  destination: { lat: 41.8525800, lng: -87.6514100},
+  origin: {lat: 25.729775, lng: -80.18696899999999},
+  destination: { lat: 25.729775, lng: -80.18696899999999},
   showOriginOnly: false
 };
 

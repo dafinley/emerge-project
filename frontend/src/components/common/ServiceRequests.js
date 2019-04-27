@@ -81,8 +81,8 @@ export default class ServiceRequest extends React.Component {
           </Card>
         </Col>
       </Row>
-      <Modal open={openWorkerModal} toggle={this.toggleServiceWorkerModal.bind(this)}>
-        <ModalHeader>Details</ModalHeader>
+      <Modal size="lg" open={openWorkerModal} toggle={this.toggleServiceWorkerModal.bind(this)}>
+        <ModalHeader>Service Worker Details</ModalHeader>
         <ModalBody><Row><Col><UserDetails /></Col><Col><Reviews /></Col></Row></ModalBody>
       </Modal>
     </Container>
