@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+// var SelectBox = React.createFactory(require('../lib/select-box'))
 
 import {
   Card,
@@ -26,9 +27,37 @@ export default class UserAccountDetails extends Component {
     email: "",
     password: "",
     address: "",
+    state: "",
     city: "",
     zipCode: "",
-    description: ""
+    description: "",
+    sponser: "",
+  }
+
+  handleClick = (e) => {
+    e.preventDefault()
+    let userData = localStorage.getItem('user')
+    if(!userData || !userData.length)
+    {
+      userData = [];
+    }
+    else 
+    {
+      userData = JSON.parse(userData);
+    }
+
+    let data = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      address: this.state.address,
+      state: this.state.state,
+      city: this.state.city,
+      zipCode: this.state.city,
+      sponser: this.state.sponser 
+    }
+    userData.push(data);
+    localStorage.setItem('user', JSON.stringify(userData));
   }
 
   render() {
@@ -51,7 +80,6 @@ export default class UserAccountDetails extends Component {
                         placeholder="First Name"
                         value={this.state.firstName} // setting the value for firstName in the state
                         onChange={(event) => {this.setState({firstName: event.target.value})}} // changes the original value of firstName inside the state
-                        // onChange={(event) => {this.setState({firstName: event.target.value})}}
                       />
 
                     </Col>
@@ -68,7 +96,7 @@ export default class UserAccountDetails extends Component {
                   </Row>
                   <Row form>
                     {/* Email */}
-                    <Col md="6" className="form-group">
+                    <Col md="12" className="form-group">
                       <label htmlFor="feEmail">Email</label>
                       <FormInput
                         type="email"
@@ -80,7 +108,7 @@ export default class UserAccountDetails extends Component {
                       />
                     </Col>
                     {/* Password */}
-                    <Col md="6" className="form-group">
+                    {/* <Col md="6" className="form-group">
                       <label htmlFor="fePassword">Password</label>
                       <FormInput
                         type="password"
@@ -90,7 +118,7 @@ export default class UserAccountDetails extends Component {
                         onChange={(event) => {this.setState({password: event.target.value})}}
                         autoComplete="current-password"
                       />
-                    </Col>
+                    </Col> */}
                   </Row>
                   {/* Address */}
                   <FormGroup>
@@ -115,7 +143,11 @@ export default class UserAccountDetails extends Component {
                     {/* State */}
                     <Col md="4" className="form-group">
                       <label htmlFor="feInputState">State</label>
-                      <FormSelect id="feInputState">
+                      <FormSelect 
+                        id="feInputState" 
+                        value={this.state.state}
+                        onChange={(event) => {this.setState({state: event.target.value})}}
+                      >
                         <option>Choose one...</option>
                         <option>AL</option>
                         <option>AK</option>
@@ -187,7 +219,19 @@ export default class UserAccountDetails extends Component {
                       <FormTextarea id="feDescription" rows="5" />
                     </Col>
                   </Row>
-                  <Button theme="accent">Update Account</Button>
+                  <Row form>
+                    {/* Sponser */}
+                    <Col md="12" className="form-group">
+                      <label htmlFor="feSponser">Sponser</label>
+                      <FormInput 
+                        id="feSponser"
+                        value={this.state.sponser}
+                        onChange={(event) => {this.setState({sponser: event.target.value})}} 
+                      />
+                    </Col>
+                  </Row>
+                  <Button onClick={(e) => this.handleClick(e)} theme="accent">Update Account</Button>
+                  {/*onClick={(e) => window.localStorage.setItem('name', {this.state.})}*/}
                 </Form>
               </Col>
             </Row>
