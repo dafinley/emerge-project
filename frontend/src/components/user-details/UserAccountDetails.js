@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
 import {
   Card,
   CardHeader,
@@ -19,16 +20,15 @@ import {
 export default class UserAccountDetails extends Component {
 // const UserAccountDetails = ({ title }) => (
   state = {
-    title: " ",
-    firstName: " ",
-    lastName: " ",
-    email: " ",
-    password: " ",
-    address: " ",
-    city: " ",
-    state: " ",
-    zipCode: " ",
-    description: " "
+    title: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    address: "",
+    city: "",
+    zipCode: "",
+    description: ""
   }
 
   render() {
@@ -50,7 +50,8 @@ export default class UserAccountDetails extends Component {
                         id="feFirstName"
                         placeholder="First Name"
                         value={this.state.firstName} // setting the value for firstName in the state
-                        onChange={(firstName) => {this.setState({firstName})}} // changes the original value of firstName inside the state
+                        onChange={(event) => {this.setState({firstName: event.target.value})}} // changes the original value of firstName inside the state
+                        // onChange={(event) => {this.setState({firstName: event.target.value})}}
                       />
 
                     </Col>
@@ -60,8 +61,8 @@ export default class UserAccountDetails extends Component {
                       <FormInput
                         id="feLastName"
                         placeholder="Last Name"
-                        value="Brooks"
-                        onChange={() => {}}
+                        value={this.state.lastName}
+                        onChange={(event) => {this.setState({lastName: event.target.value})}}
                       />
                     </Col>
                   </Row>
@@ -73,8 +74,8 @@ export default class UserAccountDetails extends Component {
                         type="email"
                         id="feEmail"
                         placeholder="Email Address"
-                        value="sierra@example.com"
-                        onChange={() => {}}
+                        value={this.state.email}
+                        onChange={(event) => {this.setState({email: event.target.value})}}
                         autoComplete="email"
                       />
                     </Col>
@@ -85,8 +86,8 @@ export default class UserAccountDetails extends Component {
                         type="password"
                         id="fePassword"
                         placeholder="Password"
-                        value="EX@MPL#P@$$w0RD"
-                        onChange={() => {}}
+                        value={this.state.password}
+                        onChange={(event) => {this.setState({password: event.target.value})}}
                         autoComplete="current-password"
                       />
                     </Col>
@@ -97,8 +98,8 @@ export default class UserAccountDetails extends Component {
                     <FormInput
                       id="feAddress"
                       placeholder="Address"
-                      value="1234 Main St."
-                      onChange={() => {}}
+                      value={this.state.address}
+                      onChange={(event) => {this.setState({address: event.target.value})}}
                     />
                   </FormGroup>
                   <Row form>
@@ -107,16 +108,66 @@ export default class UserAccountDetails extends Component {
                       <label htmlFor="feCity">City</label>
                       <FormInput
                         id="feCity"
-                        placeholder="City"
-                        onChange={() => {}}
+                        value={this.state.city}
+                        onChange={(event) => {this.setState({city: event.target.value})}}
                       />
                     </Col>
                     {/* State */}
                     <Col md="4" className="form-group">
                       <label htmlFor="feInputState">State</label>
                       <FormSelect id="feInputState">
-                        <option>Choose...</option>
-                        <option>...</option>
+                        <option>Choose one...</option>
+                        <option>AL</option>
+                        <option>AK</option>
+                        <option>AZ</option>
+                        <option>AR</option>
+                        <option>CA</option>
+                        <option>CO</option>
+                        <option>CT</option>
+                        <option>DE</option>
+                        <option>DC</option>
+                        <option>FL</option>
+                        <option>GA</option>
+                        <option>HI</option>
+                        <option>ID</option>
+                        <option>IL</option>
+                        <option>IN</option>
+                        <option>IA</option>
+                        <option>KS</option>
+                        <option>KY</option>
+                        <option>LA</option>
+                        <option>ME</option>
+                        <option>MD</option>
+                        <option>MA</option>
+                        <option>MI</option>
+                        <option>MN</option>
+                        <option>MS</option>
+                        <option>MO</option>
+                        <option>MT</option>
+                        <option>NE</option>
+                        <option>NV</option>
+                        <option>NH</option>
+                        <option>NJ</option>
+                        <option>NM</option>
+                        <option>NY</option>
+                        <option>NC</option>
+                        <option>ND</option>
+                        <option>OH</option>
+                        <option>OK</option>
+                        <option>OR</option>
+                        <option>PA</option>
+                        <option>RI</option>
+                        <option>SC</option>
+                        <option>SD</option>
+                        <option>TN</option>
+                        <option>TX</option>
+                        <option>UT</option>
+                        <option>VT</option>
+                        <option>VA</option>
+                        <option>WA</option>
+                        <option>WV</option>
+                        <option>WI</option>
+                        <option>WY</option>
                       </FormSelect>
                     </Col>
                     {/* Zip Code */}
@@ -124,8 +175,8 @@ export default class UserAccountDetails extends Component {
                       <label htmlFor="feZipCode">Zip</label>
                       <FormInput
                         id="feZipCode"
-                        placeholder="Zip"
-                        onChange={() => {}}
+                        value={this.state.zipCode}
+                        onChange={(event) => {this.setState({zipCode: event.target.value})}}
                       />
                     </Col>
                   </Row>

@@ -9,6 +9,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
+    "react-select-us-states": "^0.1.2",
     "shards-react": "^1.0.3"
   },
   "scripts": {
