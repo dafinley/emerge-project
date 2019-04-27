@@ -6,7 +6,10 @@ import getSidebarNavItems from "../data/sidebar-nav-items";
 
 let _store = {
   menuVisible: false,
-  navItems: getSidebarNavItems()
+  navItems: getSidebarNavItems(),
+  origin: {lat: 41.8507300, lng: -87.6512600},
+  destination: { lat: 41.8525800, lng: -87.6514100},
+  showOriginOnly: false
 };
 
 class Store extends EventEmitter {
@@ -15,6 +18,9 @@ class Store extends EventEmitter {
 
     this.registerToActions = this.registerToActions.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
+    this.updateOrigin = this.updateOrigin.bind(this);
+    this.updateDestination = this.updateDestination.bind(this);
+    this.updateOriginOnly = this.updateOriginOnly.bind(this);
 
     Dispatcher.register(this.registerToActions.bind(this));
   }
@@ -23,6 +29,15 @@ class Store extends EventEmitter {
     switch (actionType) {
       case Constants.TOGGLE_SIDEBAR:
         this.toggleSidebar();
+        break;
+      case Constants.UPDATE_ORIGIN:
+        this.updateOrigin(payload);
+        break;
+      case Constants.UPDATE_ORIGIN_ONLY:
+        this.updateOriginOnly(payload);
+        break;
+      case Constants.UPDATE_DESTINATION:
+        this.updateDestination(payload);
         break;
       default:
     }
@@ -33,12 +48,38 @@ class Store extends EventEmitter {
     this.emit(Constants.CHANGE);
   }
 
+  updateOrigin(payload){
+    _store.origin = payload;
+    this.emit(Constants.CHANGE);
+  }
+
+  updateOriginOnly(payload){
+    _store.showOriginOnly = payload;
+  }
+
+  updateDestination(payload){
+    _store.destination = payload;
+    this.emit(Constants.CHANGE);
+  }
+
   getMenuState() {
     return _store.menuVisible;
   }
 
   getSidebarItems() {
     return _store.navItems;
+  }
+
+  getOrigin(){
+    return _store.origin;
+  }
+
+  getShowOriginOnly(){
+    return _store.showOriginOnly;
+  }
+
+  getDestination(){
+    return _store.destination;
   }
 
   addChangeListener(callback) {

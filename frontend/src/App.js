@@ -6,6 +6,7 @@ import routes from "./routes";
 import "material-icons/iconfont/material-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/dashboard-style.css";
+import "./assets/custom.css";
 
 export default () => (
   <Router basename={process.env.REACT_APP_BASENAME || ""}>
